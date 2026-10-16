@@ -48,14 +48,10 @@ test("manually creating a new page", async ({ newTab }) => {
 
 //----------------Test 4
 //Page reload
-test(
-  "verifying the page reload",
-  { tag: "@smoke" },
-  async ({ practisePage, navigatedPage }) => {
-    await practisePage.clickTheCheckBox();
-    await expect(practisePage.getCheckbox()).toBeChecked();
-    await expect(practisePage.getCheckedCheckboxMessage()).toBeVisible();
-    await navigatedPage.reload();
-    await expect(practisePage.getCheckbox()).not.toBeChecked();
-  },
-);
+test("verifying the page reload", async ({ practisePage, navigatedPage }) => {
+  await practisePage.clickTheCheckBox();
+  await expect(practisePage.getCheckbox()).toBeChecked();
+  await expect(practisePage.getCheckedCheckboxMessage()).toBeVisible();
+  await navigatedPage.reload();
+  await expect(practisePage.getCheckbox()).not.toBeChecked();
+});
