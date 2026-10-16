@@ -1,14 +1,18 @@
 import { test, expect } from "../fixtures/pages";
 
 //-----------------Using frameLocator
-test("verifying the confirmation of the click button", async ({ iframe }) => {
-  await iframe.clickOnClickMeBtn();
-  await expect(iframe.getIframeMessage()).toHaveText(
-    "Button inside iframe clicked!",
-  );
-});
+test(
+  "verifying the confirmation of the click button",
+  { tag: "@smoke" },
+  async ({ iframe }) => {
+    await iframe.clickOnClickMeBtn();
+    await expect(iframe.getIframeMessage()).toHaveText(
+      "Button inside iframe clicked!",
+    );
+  },
+);
 
-test("verifying filled input value", async ({ iframe }) => {
+test("verifying filled input value", { tag: "@smoke" }, async ({ iframe }) => {
   await iframe.typeMessage();
   await expect(iframe.getIframeMessage()).toHaveText(
     "You typed: Hello iframe! ",

@@ -22,19 +22,19 @@ type MainPage = {
 };
 
 async function dialogs(page: Page, context: BrowserContext) {
-  await page.goto("https://selectors-practice.onrender.com/");
+  await page.goto("/");
   return new PopupsAlertsPage(page, context);
 }
 
 async function uploadDownloadPage(page: Page, context: BrowserContext) {
-  await page.goto("https://selectors-practice.onrender.com/");
+  await page.goto("/");
   return new UploadDownloadPage(page, context);
 }
 
 export const test = base.extend<MainPage>({
   //the function that builds and returns it
   navigatedPage: async ({ page }, use) => {
-    await page.goto("https://selectors-practice.onrender.com/");
+    await page.goto("/");
     await use(page);
   },
 
@@ -47,19 +47,19 @@ export const test = base.extend<MainPage>({
   },
 
   newTab: async ({ page, context }, use) => {
-    await page.goto("https://selectors-practice.onrender.com/");
+    await page.goto("/");
     const newTabPage = new NewTabPage(page, context);
     await use(newTabPage);
   },
 
   iframe: async ({ page, context }, use) => {
-    await page.goto("https://selectors-practice.onrender.com/");
+    await page.goto("/");
     const iframePage = new IframePage(page, context);
     await use(iframePage);
   },
 
   popup: async ({ page, context }, use) => {
-    await page.goto("https://selectors-practice.onrender.com/");
+    await page.goto("/");
     const popupsAlertsPage = new PopupsAlertsPage(page, context);
     await use(popupsAlertsPage);
   },
@@ -77,7 +77,7 @@ export const test = base.extend<MainPage>({
   },
 
   practisePage: async ({ page, context }, use) => {
-    await page.goto("https://selectors-practice.onrender.com/");
+    await page.goto("/");
     const practisePage = new PractisePage(page, context);
     await use(practisePage);
   },

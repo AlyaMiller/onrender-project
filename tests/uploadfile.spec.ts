@@ -1,15 +1,19 @@
 import { test, expect } from "../fixtures/pages";
 
 //<input type="file">
-test("Uploading a single file directly", async ({ uploadFile }) => {
-  //page, context- that's BasePage's constructor, which every subclass inherits automatically
+test(
+  "Uploading a single file directly",
+  { tag: "@smoke" },
+  async ({ uploadFile }) => {
+    //page, context- that's BasePage's constructor, which every subclass inherits automatically
 
-  await uploadFile.directSingleUpload();
-  //verify the filename shows correctly
-  await expect(uploadFile.getUploadedFileMessage()).toHaveText(
-    "Selected files: test-file.pdf",
-  );
-});
+    await uploadFile.directSingleUpload();
+    //verify the filename shows correctly
+    await expect(uploadFile.getUploadedFileMessage()).toHaveText(
+      "Selected files: test-file.pdf",
+    );
+  },
+);
 
 //Upload multiple files at once to the same input
 test("Uploading multiple files at once", async ({ uploadFile }) => {
