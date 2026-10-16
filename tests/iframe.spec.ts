@@ -1,20 +1,14 @@
-import { test, expect } from "../fixtures/navigated-page";
-import IframePage from "../Pages/IframePage";
+import { test, expect } from "../fixtures/pages";
 
 //-----------------Using frameLocator
-test("verifying the confirmation of the click button", async ({
-  navigatedPage,
-  context,
-}) => {
-  const iframe = new IframePage(navigatedPage, context);
+test("verifying the confirmation of the click button", async ({ iframe }) => {
   await iframe.clickOnClickMeBtn();
   await expect(iframe.getIframeMessage()).toHaveText(
     "Button inside iframe clicked!",
   );
 });
 
-test("verifying filled input value", async ({ navigatedPage, context }) => {
-  const iframe = new IframePage(navigatedPage, context);
+test("verifying filled input value", async ({ iframe }) => {
   await iframe.typeMessage();
   await expect(iframe.getIframeMessage()).toHaveText(
     "You typed: Hello iframe! ",
@@ -22,8 +16,7 @@ test("verifying filled input value", async ({ navigatedPage, context }) => {
 });
 
 //---------------Using contentFrame()
-test("using contentFrame() method", async ({ navigatedPage, context }) => {
-  const iframe = new IframePage(navigatedPage, context);
+test("using contentFrame() method", async ({ iframe }) => {
   await iframe.usingContentFrame();
   await expect(iframe.getIframeMessage()).toHaveText(
     "You typed: Hello iframe! ",

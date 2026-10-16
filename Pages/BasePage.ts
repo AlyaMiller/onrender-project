@@ -23,8 +23,8 @@ export default class BasePage {
     await locator.click();
   }
 
-  getMessage(string: string) {
-    return this.page.getByText(string);
+  getMessage(message: string) {
+    return this.page.getByText(message);
   }
 
   getElement(locator: Locator) {

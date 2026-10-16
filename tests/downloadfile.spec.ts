@@ -1,19 +1,19 @@
-import { test, expect } from "../fixtures/navigated-page";
-import UploadDownloadPage from "../Pages/UploadDownloadPage";
+import { test, expect } from "../fixtures/pages";
 
 //verify download
-test("Downloading a single file", async ({ navigatedPage, context }) => {
-  const singleFileDownload = new UploadDownloadPage(navigatedPage, context);
-  await singleFileDownload.downloadedSingleFile();
-  await expect(singleFileDownload.getDownloadedSingleFileMessage()).toHaveText(
+test("Downloading a single file", async ({ downloadFile}) => {
+  await downloadFile.downloadedSingleFile();
+  await expect(downloadFile.getDownloadedSingleFileMessage()).toHaveText(
     "Single file download initiated!",
   );
 });
 
-test("Downloading Multiple Files", async ({ navigatedPage, context }) => {
-  const multipleFileDownload = new UploadDownloadPage(navigatedPage, context);
-  await multipleFileDownload.downloadedMultipleFile();
+test("Downloading Multiple Files", async ({ downloadFile}) => {
+  await downloadFile.downloadedMultipleFile();
   await expect(
-    multipleFileDownload.getDownloadedMultipleFileMessage(),
+   downloadFile.getDownloadedMultipleFileMessage(),
   ).toHaveText("Three files downloaded!");
 });
+
+  
+

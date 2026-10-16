@@ -80,4 +80,5 @@ export default class UploadDownloadPage extends PractisePage {
   getDownloadedMultipleFileMessage() {
     return this.page.locator("#multiDownloadOutput");
   }
+
 }
